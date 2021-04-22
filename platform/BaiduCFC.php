@@ -47,8 +47,7 @@ function GetPathSetting($event, $context)
     }
     $_SERVER['HTTP_HOST'] = $event['headers']['Host'];
     $_SERVER['REQUEST_SCHEME'] = $event['headers']['X-Forwarded-Proto'];
-    $_SERVER['host'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
-    //if ($_SERVER['HTTP_REFERER']!='') 
+    //$_SERVER['host'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
     $_SERVER['referhost'] = explode('/', $event['headers']['Referer'])[2];
     $_SERVER['HTTP_TRANSLATE'] = $event['headers']['translate'];//'f'
     $_SERVER['BCE_CFC_RUNTIME_NAME'] = 'php7';
