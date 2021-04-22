@@ -58,8 +58,7 @@ function GetPathSetting($event, $context)
     }
     $_SERVER['HTTP_HOST'] = $event['headers']['Host'][0];
     $_SERVER['REQUEST_SCHEME'] = $event['headers']['X-Forwarded-Proto'][0];
-    $_SERVER['host'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
-    //if ($_SERVER['HTTP_REFERER']!='') 
+    //$_SERVER['host'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
     $_SERVER['referhost'] = explode('/', $event['headers']['Referer'][0])[2];
     $_SERVER['FC_SERVER_PATH'] = '/var/fc/runtime/php7.2';
     return $path;
