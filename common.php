@@ -130,10 +130,10 @@ function main($path)
     global $slash;
     global $drive;
 
-    if (getConfig('forcehttps')&&$_SERVER['REQUEST_SCHEME']=='http') return output('visit https.', 302, [ 'Location' => 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] ]);
     $slash = '/';
     if (strpos(__DIR__, ':')) $slash = '\\';
     $_SERVER['php_starttime'] = microtime(true);
+    if (getConfig('forcehttps')&&$_SERVER['REQUEST_SCHEME']=='http') return output('visit https.', 302, [ 'Location' => 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] ]);
     $path = path_format($path);
     if (in_array($_SERVER['firstacceptlanguage'], array_keys($constStr['languages']))) {
         $constStr['language'] = $_SERVER['firstacceptlanguage'];
