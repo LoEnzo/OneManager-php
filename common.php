@@ -37,6 +37,7 @@ $EnvConfigs = [
     'theme'             => 0b010,
     'dontBasicAuth'     => 0b010,
     'referrer'          => 0b011,
+    'forcehttps'        => 0b010,
 
     'Driver'            => 0b100,
     'client_id'         => 0b100,
@@ -129,6 +130,7 @@ function main($path)
     global $slash;
     global $drive;
 
+    if (getConfig('forcehttps')&&$_SERVER['REQUEST_SCHEME']=='http') return output('visit https.', 302, [ 'Location' => 'https://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] ]);
     $slash = '/';
     if (strpos(__DIR__, ':')) $slash = '\\';
     $_SERVER['php_starttime'] = microtime(true);
