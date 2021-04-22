@@ -52,8 +52,9 @@ function GetPathSetting($event, $context)
         $_SERVER['PHP_AUTH_USER'] = $basicAuth[0];
         $_SERVER['PHP_AUTH_PW'] = $basicAuth[1];
     }
-    $_SERVER['REQUEST_SCHEME'] = $event['headers']['x-forwarded-proto'];
-    $_SERVER['host'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
+    $_SERVER['REQUEST_SCHEME'] = $event['headers']['x-api-scheme'];
+    //$_SERVER['REQUEST_SCHEME'] = $event['headers']['x-forwarded-proto'];
+    //$_SERVER['host'] = $_SERVER['REQUEST_SCHEME'] . '://' . $_SERVER['HTTP_HOST'];
     $_SERVER['referhost'] = explode('/', $event['headers']['referer'])[2];
     $_SERVER['HTTP_TRANSLATE']==$event['headers']['translate'];//'f'
     $_SERVER['USER'] = 'qcloud';
